@@ -1,10 +1,13 @@
-import styles from "./Navbar.module.css";
+import styles from "./UserNav.Module.css";
 import logo from "../../utils/logo.png";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function UserNav(props) {
     const navigate = useNavigate();
+    function handleClick(){
+        navigate("/login");
+    }
     return (
         <nav class="navbar navbar-expand-lg navbar-light bg-light" className={styles.total}>
             <a class="navbar-brand" href="#"> <img className={styles.logo} src={logo} alt="PapelCart" /> </a>
@@ -14,21 +17,20 @@ function Navbar() {
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="ms-auto navbar-nav mr-auto nav-right">
-                    <li class=" nav-item active" className={styles.right}>
-                        <button type="button" class="btn-lg btn-dark" onClick={() => {
-                            navigate("/login");
-                        }}> Login/Register </button>
-                    </li>
-                    {/* <li class="nav-item">
-                        <a class="nav-link" href="#">Publications</a>
+                    <li class=" nav-item active">
+                        <a class="nav-link" href="#">My Subscriptions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li> */}
+                        <a class="nav-link" href="#" onClick={handleClick}>Subscribe Newspapers</a>
+                    </li>
+                    <li class="nav-item" className={styles.right}>
+                        <a class="nav-link" href="#"><i className="fa-solid fa-user" />{props.name}</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-    )
-};
+    );
+}
 
-export default Navbar;
+
+export default UserNav;

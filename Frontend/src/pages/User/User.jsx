@@ -39,24 +39,6 @@ function User(props) {
             });
         }
     }, []);
-    // axios
-    // .post("http://localhost:3000/api/user", state)
-    // .then((res) => {
-    //     console.log(res.data);
-    //     if (res.data.status === 400) {
-    //         alert("User Not Found!! Please Register");
-    //     } else if (res.data.status === 500){
-    //         alert("Server Error");
-    //     }
-    //     else {
-    //         // console.log(res.data.data[0].User_Name);
-    //         // setName(() => {return {name : res.data.data[0].User_Name}});
-    //     }
-    // })
-    // .catch((err) => {
-    //     console.error(err);
-    // });
-    // console.log(state);
     return (
         <div>
             <UserNav name={nameField.name}/>

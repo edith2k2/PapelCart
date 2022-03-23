@@ -21,7 +21,7 @@ function UserNav(props) {
                         <a class="nav-link" href="#">My Subscriptions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onClick={handleClick}>Subscribe Newspapers</a>
+                        <a class="nav-link" href="#" onClick={() => {navigate("/")}}>Subscribe Newspapers</a>
                     </li>
                     <li class="nav-item" className={styles.right}>
                         <a class="nav-link" href="#"><i className="fa-solid fa-user" />{props.name}</a>

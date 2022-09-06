@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Form, Button } from "react-bootstrap";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Login(props) {
       alert("Invalid Input");
     }
   }
-  function checkManagerCredentials(event){
+  function checkManagerCredentials(event) {
     event.preventDefault();
     const { email, password } = user;
     if (email && password) {
@@ -61,58 +62,92 @@ function Login(props) {
       }
     });
   }
+  function handleSubmit(event) {}
   return (
-    <form class="row g-3" className={styles.total}>
-      <br />
-      <div class="col-md-6">
-        <label for="inputEmail" class="form-label">
-          Email
-        </label>
-        <input
-          value={user.email}
-          onChange={handleChange}
-          type="email"
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Enter your email ID"
-        />
-      </div>
-      <br />
-      <div class="col-md-6">
-        <label for="inputPassword" class="form-label">
-          Password
-        </label>
-        <input
-          value={user.password}
-          onChange={handleChange}
-          type="password"
-          class="form-control"
-          id="inputPassword4"
-          placeholder="Enter your password"
-        />
-      </div>
-      <br />
-      <div class="col-12" className={styles.regBtn}>
-        <button onClick={checkCredentials} class="btn btn-dark">
-          Sign in
-        </button>
-      </div>
-      <div class="col-12" className={styles.regBtn}>
-        <button onClick={checkManagerCredentials} class="btn btn-dark">
-          Manager Sign In
-        </button>
-      </div>
-      <div class="col-12" className={styles.regBtn}>
-        <button
-          class="btn btn-dark"
-          onClick={() => {
-            navigate("/register");
-          }}
-        >
-          Create New Account
-        </button>
-      </div>
-    </form>
+    <div style={{ margin: "0 auto", padding: "2rem", width: "25em" }}>
+      <Form onSubmit={checkCredentials}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            value={user.email}
+            onChange={handleChange}
+            type="email"
+            placeholder="Enter email"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            value={user.password}
+            onChange={handleChange}
+            type="password"
+            placeholder="Password"
+          />
+          <Form.Text className="text-muted">
+            We'll never leak your password.
+          </Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
+
+    // <form class="row g-3" className={styles.total}>
+    //   <br />
+    //   <div class="col-md-6">
+    //     <label for="inputEmail" class="form-label">
+    //       Email
+    //     </label>
+    //     <input
+    //       value={user.email}
+    //       onChange={handleChange}
+    //       type="email"
+    //       class="form-control"
+    //       id="inputEmail4"
+    //       placeholder="Enter your email ID"
+    //     />
+    //   </div>
+    //   <br />
+    //   <div class="col-md-6">
+    //     <label for="inputPassword" class="form-label">
+    //       Password
+    //     </label>
+    //     <input
+    //       value={user.password}
+    //       onChange={handleChange}
+    //       type="password"
+    //       class="form-control"
+    //       id="inputPassword4"
+    //       placeholder="Enter your password"
+    //     />
+    //   </div>
+    //   <br />
+    //   <div class="col-12" className={styles.regBtn}>
+    //     <button onClick={checkCredentials} class="btn btn-dark">
+    //       Sign in
+    //     </button>
+    //   </div>
+    //   <div class="col-12" className={styles.regBtn}>
+    //     <button onClick={checkManagerCredentials} class="btn btn-dark">
+    //       Manager Sign In
+    //     </button>
+    //   </div>
+    //   <div class="col-12" className={styles.regBtn}>
+    //     <button
+    //       class="btn btn-dark"
+    //       onClick={() => {
+    //         navigate("/register");
+    //       }}
+    //     >
+    //       Create New Account
+    //     </button>
+    //   </div>
+    // </form>
   );
 }
 
